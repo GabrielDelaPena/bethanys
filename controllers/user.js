@@ -45,3 +45,25 @@ exports.register = async (req, res) => {
       .send("An error occured in the server, we are currently fixing it.");
   }
 };
+
+exports.login = async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return res.status(400).send("Email does not exist.");
+  }
+
+  const isEqual = await bcrypt.compare(req.body.password, user.password);
+  if (!isEqual) {
+    return res.status(400).send("Email or Password invalid.");
+  }
+
+  try {
+    console.log("USER LOGGEDIN");
+    res.status(200).json({ userId: user._id });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send("An error occured in the server, we are currently fixing it.");
+  }
+};
