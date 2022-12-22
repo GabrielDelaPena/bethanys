@@ -30,6 +30,10 @@ const cakeSchema = new Schema(
       min: 6,
       max: 290,
     },
+    favorite: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
