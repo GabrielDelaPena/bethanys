@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", async (req, res) => {
-  res.status(200).json("Welcome to my API");
+  res.status(200).send("Welcome to my API");
 });
 
 app.use("/api/cakes", cakeRoutes);
