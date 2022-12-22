@@ -24,6 +24,7 @@ exports.addCake = async (req, res) => {
     description: req.body.description,
     imageUrl: req.body.imageUrl,
     category: req.body.category,
+    favorite: false,
   });
 
   try {
